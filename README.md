@@ -23,7 +23,10 @@
 ### Installation
 
 ```
-(추후 업데이트)
+$ git clone https://github.com/rktdnjs/Mindrawing_FE.git
+$ cd Mindrawing_FE
+$ npm install
+$ npm run dev
 ```
 
 ### 프로젝트 기획 의도
