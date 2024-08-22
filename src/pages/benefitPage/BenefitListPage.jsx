@@ -1,7 +1,7 @@
 import React from 'react';
 
 const BenefitListPage = () => {
-    return <div></div>;
+  return <div></div>;
 };
 
 export default BenefitListPage;

@@ -1,7 +1,7 @@
 import React from 'react';
 
 const CenterSelectPage = () => {
-    return <div></div>;
+  return <div></div>;
 };
 
 export default CenterSelectPage;

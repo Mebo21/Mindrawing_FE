@@ -23,41 +23,35 @@ import MyPageUserInfoEditPage from './pages/myPage/MyPageUserInfoEditPage';
 import ErrorPage from './pages/ErrorPage';
 
 function App() {
-    return (
-        <>
-            <BrowserRouter>
-                <Routes>
-                    <Route path={routes.home} element={<Homepage />} />
-                    <Route path={routes.login} element={<LoginPage />} />
-                    <Route path={routes.register} element={<RegisterPage />} />
-                    <Route path={routes.analysisIntro} element={<AnalysisIntroPage />} />
-                    <Route path={routes.analysisInput} element={<AnalysisInputPage />} />
-                    <Route path={routes.analysisSummary} element={<AnalysisSummaryPage />} />
-                    <Route path={routes.analysisDetail} element={<AnalysisDetailPage />} />
-                    <Route path={routes.analysisHistory} element={<AnalysisHistoryPage />} />
-                    <Route path={routes.centerList} element={<CenterListPage />} />
-                    <Route path={routes.centerSelect} element={<CenterSelectPage />} />
-                    <Route path={routes.centerInfo} element={<CenterInfoPage />} />
-                    <Route path={routes.centerReservation} element={<CenterReservationPage />} />
-                    <Route path={routes.benefitList} element={<BenefitListPage />} />
-                    <Route path={routes.benefitDetail} element={<BenefitDetailPage />} />
-                    <Route path={routes.mypage} element={<MyPage />} />
-                    <Route path={routes.mypageChildInfoRegister} element={<MyPageChildInfoRegisterPage />} />
-                    <Route path={routes.mypagePartnerCenterRegister} element={<MyPagePartnerCenterRegisterPage />} />
-                    <Route
-                        path={routes.mypagePartnerCenterRequestList}
-                        element={<MyPagePartnerCenterRequestListPage />}
-                    />
-                    <Route
-                        path={routes.mypagePartnerCenterRequestManage}
-                        element={<MyPagePartnerCenterRequestManagePage />}
-                    />
-                    <Route path={routes.mypageUserInfoEdit} element={<MyPageUserInfoEditPage />} />
-                    <Route path={routes.error} element={<ErrorPage />} />
-                </Routes>
-            </BrowserRouter>
-        </>
-    );
+  return (
+    <>
+      <BrowserRouter>
+        <Routes>
+          <Route path={routes.home} element={<Homepage />} />
+          <Route path={routes.login} element={<LoginPage />} />
+          <Route path={routes.register} element={<RegisterPage />} />
+          <Route path={routes.analysisIntro} element={<AnalysisIntroPage />} />
+          <Route path={routes.analysisInput} element={<AnalysisInputPage />} />
+          <Route path={routes.analysisSummary} element={<AnalysisSummaryPage />} />
+          <Route path={routes.analysisDetail} element={<AnalysisDetailPage />} />
+          <Route path={routes.analysisHistory} element={<AnalysisHistoryPage />} />
+          <Route path={routes.centerList} element={<CenterListPage />} />
+          <Route path={routes.centerSelect} element={<CenterSelectPage />} />
+          <Route path={routes.centerInfo} element={<CenterInfoPage />} />
+          <Route path={routes.centerReservation} element={<CenterReservationPage />} />
+          <Route path={routes.benefitList} element={<BenefitListPage />} />
+          <Route path={routes.benefitDetail} element={<BenefitDetailPage />} />
+          <Route path={routes.mypage} element={<MyPage />} />
+          <Route path={routes.mypageChildInfoRegister} element={<MyPageChildInfoRegisterPage />} />
+          <Route path={routes.mypagePartnerCenterRegister} element={<MyPagePartnerCenterRegisterPage />} />
+          <Route path={routes.mypagePartnerCenterRequestList} element={<MyPagePartnerCenterRequestListPage />} />
+          <Route path={routes.mypagePartnerCenterRequestManage} element={<MyPagePartnerCenterRequestManagePage />} />
+          <Route path={routes.mypageUserInfoEdit} element={<MyPageUserInfoEditPage />} />
+          <Route path={routes.error} element={<ErrorPage />} />
+        </Routes>
+      </BrowserRouter>
+    </>
+  );
 }
 
 export default App;

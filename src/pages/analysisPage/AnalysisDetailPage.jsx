@@ -1,7 +1,7 @@
 import React from 'react';
 
 const AnalysisDetailPage = () => {
-    return <div></div>;
+  return <div></div>;
 };
 
 export default AnalysisDetailPage;

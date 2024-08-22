@@ -1,7 +1,12 @@
 import React from 'react';
+import PageLayout from '../../components/templates/PageTemplate';
 
 const Homepage = () => {
-    return <div></div>;
+  return (
+    <>
+      <PageLayout></PageLayout>
+    </>
+  );
 };
 
 export default Homepage;
