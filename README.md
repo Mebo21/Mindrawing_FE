@@ -56,9 +56,11 @@
 ├── 📁 pages
 ├── 📁 styles
 ├── 📁 utils
-├── App.js
-├── global.css
-└── index.js
+├── App.jsx
+├── index.css
+└── main.jsx
+vite.config.js
+index.html
 ```
 
 ## 기술 스택
