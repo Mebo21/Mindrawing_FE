@@ -1,6 +1,16 @@
 // PageLayout.js
 import styled from 'styled-components';
 
+import React from 'react';
+
+const PageTemplate = ({ children }) => {
+  return (
+    <>
+      <PageLayout>{children}</PageLayout>
+    </>
+  );
+};
+
 // PageLayout 컴포넌트 정의
 const PageLayout = styled.div`
   width: 360px;
@@ -13,4 +23,4 @@ const PageLayout = styled.div`
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 그림자 */
 `;
 
-export default PageLayout;
+export default PageTemplate;
