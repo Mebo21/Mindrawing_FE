@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 import { useNavigate } from 'react-router-dom';
 
-const AnalysisNav = () => {
+const AnalysisNav = ({ isNextButtonEnabled }) => {
   const navigate = useNavigate();
 
   const handlePrevious = () => {
@@ -11,7 +11,9 @@ const AnalysisNav = () => {
   };
 
   const handleNext = () => {
-    navigate('/analysis-summary');
+    if (isNextButtonEnabled) {
+      navigate('/analysis-summary');
+    }
   };
 
   return (
@@ -20,7 +22,7 @@ const AnalysisNav = () => {
         <IoIosArrowBack size={20} className="icon-left" />
         <span>이전</span>
       </NavButton>
-      <NavButton primary onClick={handleNext}>
+      <NavButton primary onClick={handleNext} disabled={!isNextButtonEnabled} isenabled={isNextButtonEnabled}>
         <span>다음</span>
         <IoIosArrowForward size={20} className="icon-right" />
       </NavButton>
@@ -52,30 +54,33 @@ const NavButton = styled.button`
   font-size: 15px;
   font-weight: bold;
   font-family: 'Pretendard', 'sans-serif';
-  cursor: pointer;
   position: relative;
 
-  /* 스타일 조건부 변경 */
-  background-color: ${(props) => (props.primary ? '#8B73D2' : 'white')};
-  color: ${(props) => (props.primary ? 'white' : '#8B73D2')};
-  border: ${(props) => (props.primary ? 'none' : '1px solid #8B73D2')};
+  /* 이전 버튼 스타일 유지 */
+  background-color: ${(props) => (props.previous ? 'white' : props.isenabled ? '#8B73D2' : '#C9C9C9')};
+  color: ${(props) => (props.previous ? '#8B73D2' : 'white')};
+  border: ${(props) => (props.previous ? '2px solid #8B73D2' : 'none')};
+  cursor: ${(props) => (props.isenabled || props.previous ? 'pointer' : 'not-allowed')};
+
+  transition: background-color 0.3s ease;
 
   span {
-    /* 텍스트가 중앙에 위치하도록 */
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
   }
 
-  /* 좌측 화살표 아이콘 위치 조정 */
   .icon-left {
     position: absolute;
     left: 15px;
   }
 
-  /* 우측 화살표 아이콘 위치 조정 */
   .icon-right {
     position: absolute;
     right: 15px;
+  }
+
+  &:disabled {
+    pointer-events: none;
   }
 `;
