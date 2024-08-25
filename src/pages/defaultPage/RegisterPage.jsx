@@ -7,8 +7,10 @@ import Postcode from 'react-daum-postcode'; // Daum 주소 검색 API
 import { registerUser } from '../../apis/register';
 import Swal from 'sweetalert2'; // Swal 라이브러리 임포트
 import routes from '../../constant/routes';
+import { useNavigate } from 'react-router-dom';
 
 const RegisterPage = () => {
+  const navigate = useNavigate(); // useNavigate 훅 호출
   const [formData, setFormData] = useState({
     id: '',
     password: '',
@@ -67,7 +69,7 @@ const RegisterPage = () => {
       id: formData.id,
       password: formData.password,
       nickname: formData.nickname,
-      address: `${formData.address} ${formData.detailAddress}`, // 주소 + 상세주소 결합
+      loc: `${formData.address} ${formData.detailAddress}`, // 주소 + 상세주소 결합
     };
 
     console.log('전송하는 데이터:', submitData);
@@ -78,8 +80,8 @@ const RegisterPage = () => {
       // 회원가입 성공 메시지
       Swal.fire({
         icon: 'success',
-        title: '회원가입 성공',
-        text: '회원가입이 완료되었습니다!',
+        title: '회원가입 완료!',
+        text: '마인드로잉에 어서오세요🥰 로그인을 진행해주세요!',
       });
       // 회원가입 성공 후 로그인 페이지로 이동하는 코드
       navigate(routes.login);
@@ -89,7 +91,7 @@ const RegisterPage = () => {
       Swal.fire({
         icon: 'error',
         title: '회원가입 실패',
-        text: '에러가 발생했습니다. 다시 시도해주세요.',
+        text: '에러가 발생했습니다😥 다시 시도해주세요!',
       });
     }
   };
