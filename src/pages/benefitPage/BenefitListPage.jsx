@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import PageTemplate from '../../components/templates/PageTemplate';
 import { useNavigate } from 'react-router-dom';
 import Nav from '../../components/layouts/Nav';
-import sampleImage from '../../assets/images/sample_Image.png'; // 이미지 파일 경로는 임의로 설정했습니다.
 import benefit_card1 from '../../assets/images/benefit_card1.png';
 import benefit_card2 from '../../assets/images/benefit_card2.png';
 import benefit_card3 from '../../assets/images/benefit_card3.png';
