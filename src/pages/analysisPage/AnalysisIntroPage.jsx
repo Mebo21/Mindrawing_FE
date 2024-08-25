@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import Header from '../../components/layouts/Header';
 import PageTemplate from '../../components/templates/PageTemplate';
 import AnalysisIntroNav from '../../components/layouts/AnalysisIntroNav';
+import AnalysisIntroHeader from './../../components/layouts/AnalysisIntroHeader';
 import HTPImage from '../../assets/images/HTP_intro1.png';
 import HImage from '../../assets/images/HTP_intro2.png';
 import TImage from '../../assets/images/HTP_intro3.png';
@@ -10,7 +10,7 @@ import PImage from '../../assets/images/HTP_intro4.png';
 const AnalysisIntroPage = () => {
   return (
     <PageTemplate>
-      <Header title="그림심리분석 소개" />
+      <AnalysisIntroHeader title="그림심리분석 소개" />
       <ContentWrapper>
         <QuestionTitle>Q. HTP 검사는 무엇인가요?</QuestionTitle>
         <ImageWrapper>
