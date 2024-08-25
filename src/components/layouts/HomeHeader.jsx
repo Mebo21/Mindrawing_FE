@@ -22,8 +22,8 @@ const HomeHeader = () => {
           <img src={logo} alt="logo" />
           <HeaderText>마인드로잉</HeaderText>
         </HeaderLeftDiv>
-        {/* FaBell 아이콘을 스타일링한 StyledBellIcon으로 교체 */}
-        <StyledBellIcon size="25" onClick={handleBellClick} isModalOpen={isModalOpen} />
+        {/* isModalOpen을 전달하지 않음 */}
+        <StyledBellIcon size="25" isOpen={isModalOpen} onClick={handleBellClick} />
       </HeaderBar>
       {isModalOpen && <NotificationModal onClose={handleModalClose} />} {/* 모달 표시 */}
     </>
@@ -33,7 +33,7 @@ const HomeHeader = () => {
 // FaBell 스타일링
 const StyledBellIcon = styled(FaBell)`
   cursor: pointer; // 마우스를 올렸을 때 포인터로 변경
-  color: ${(props) => (props.isModalOpen ? '#7469b6' : '#000')}; // 모달 상태에 따라 색상 변경
+  color: ${(props) => (props.isOpen ? '#7469b6' : '#000')}; // 모달 상태에 따라 색상 변경
   &:hover {
     color: #7469b6; // 마우스를 올리면 색상 변경
   }

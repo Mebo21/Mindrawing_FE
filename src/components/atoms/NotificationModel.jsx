@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { animated, useSpring } from 'react-spring'; // react-spring 임포트
-import { FaTimes } from 'react-icons/fa'; // 닫기 아이콘
+import { FaTimes, FaBell } from 'react-icons/fa'; // 닫기 아이콘
 
 const NotificationModal = ({ onClose }) => {
   const animation = useSpring({
@@ -15,17 +15,18 @@ const NotificationModal = ({ onClose }) => {
     <ModalOverlay>
       <ModalContent style={animation}>
         <ModalHeader>
-          <FaTimes onClick={onClose} /> {/* 닫기 아이콘 */}
+          <FaTimes className="closeIcon" onClick={onClose} /> {/* 닫기 아이콘 */}
         </ModalHeader>
         <NotificationList>
           {[1, 2, 3].map((_, index) => (
             <NotificationItem key={index}>
               <div>
-                <NotificationIcon />
+                <FaBell />
               </div>
               <div>
                 <h3>알림 제목</h3>
-                <p>알림 내용이 여기에 들어갑니다...</p>
+                <p>알림 내용이 여기에 들어갑니다!</p>
+                <p>알림 내용이 여기에 들어갑니다!</p>
               </div>
             </NotificationItem>
           ))}
@@ -50,9 +51,10 @@ const ModalOverlay = styled.div`
 `;
 
 // 모달 컨텐츠 스타일
-const ModalContent = styled(animated.div)`  /* animated.div로 애니메이션 적용 */
-  width: 90%;
-  max-width: 400px;
+const ModalContent = styled(animated.div)`
+  /* animated.div로 애니메이션 적용 */
+  width: 320px;
+  height: 600px;
   background-color: white;
   padding: 20px;
   border-radius: 10px;
@@ -64,7 +66,9 @@ const ModalHeader = styled.div`
   display: flex;
   justify-content: flex-end;
   font-size: 20px;
-  cursor: pointer;
+  .closeIcon {
+    cursor: pointer;
+  }
 `;
 
 // 알림 목록 스타일
