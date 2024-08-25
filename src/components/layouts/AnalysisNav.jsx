@@ -12,7 +12,7 @@ const AnalysisNav = ({ isNextButtonEnabled }) => {
 
   const handleNext = () => {
     if (isNextButtonEnabled) {
-      navigate('/analysis-summary');
+      navigate('/analysis-summary/1');
     }
   };
 
