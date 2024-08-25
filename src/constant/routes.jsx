@@ -7,8 +7,8 @@ const routes = {
   // 그림 심리 분석 관련 페이지들
   analysisIntro: '/analysis-intro',
   analysisInput: '/analysis-input',
-  analysisSummary: '/analysis-summary',
-  analysisDetail: '/analysis-detail',
+  analysisSummary: '/analysis-summary/:id',
+  analysisDetail: '/analysis-detail/:id',
   analysisHistory: '/analysis-history',
 
   // 센터 관련 페이지들
