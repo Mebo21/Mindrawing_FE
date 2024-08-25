@@ -23,8 +23,6 @@ const ProtectedRoute = ({ children, requiredAdmin }) => {
   const checkUserAuth = () => {
     // requiredAuth 중 하나라도 만족하면, 페이지 접근 권한 유효함
     const userAuth = localStorage.getItem('admin');
-    console.log('userAuth:', userAuth);
-    console.log('requiredAdmin:', requiredAdmin);
     if (!requiredAdmin || requiredAdmin.includes(userAuth)) {
       setIsAuthValid(true);
     } else {
