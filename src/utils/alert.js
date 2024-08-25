@@ -9,3 +9,20 @@ export const authInvalidMessage = {
   icon: 'error',
   confirmButtonText: '확인',
 };
+export const logoutMessage = {
+  title: '로그아웃 하시겠습니까?',
+  icon: 'question',
+  showCancelButton: true,
+  reverseButtons: true,
+  confirmButtonColor: '#0075FF',
+  cancelButtonColor: '#D9D9D9',
+  cancelButtonText: '취소',
+  confirmButtonText: '확인',
+};
+export const logoutCompleteMessage = {
+  title: '로그아웃 완료!',
+  html: `마인드로잉을 사용해주셔서 감사해요😊<br> 
+  다음에 또 만나요!`,
+  icon: 'success',
+  confirmButtonText: '확인',
+};
