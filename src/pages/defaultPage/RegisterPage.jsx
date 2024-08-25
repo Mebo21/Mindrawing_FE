@@ -4,6 +4,9 @@ import PageTemplate from './../../components/templates/PageTemplate';
 import Header from '../../components/layouts/Header';
 import { FaCheckSquare, FaRegSquare, FaEye, FaEyeSlash } from 'react-icons/fa'; // 체크박스 아이콘
 import Postcode from 'react-daum-postcode'; // Daum 주소 검색 API
+import { registerUser } from '../../apis/register';
+import Swal from 'sweetalert2'; // Swal 라이브러리 임포트
+import routes from '../../constant/routes';
 
 const RegisterPage = () => {
   const [formData, setFormData] = useState({
@@ -56,7 +59,7 @@ const RegisterPage = () => {
   };
 
   // 폼 제출 처리
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     // 출력할 데이터를 추출
@@ -67,7 +70,28 @@ const RegisterPage = () => {
       address: `${formData.address} ${formData.detailAddress}`, // 주소 + 상세주소 결합
     };
 
-    console.log('회원가입 데이터:', submitData); // 필요한 데이터만 출력
+    console.log('전송하는 데이터:', submitData);
+
+    try {
+      const result = await registerUser(submitData); // 회원가입 API 호출
+      console.log('회원가입 성공:', result);
+      // 회원가입 성공 메시지
+      Swal.fire({
+        icon: 'success',
+        title: '회원가입 성공',
+        text: '회원가입이 완료되었습니다!',
+      });
+      // 회원가입 성공 후 로그인 페이지로 이동하는 코드
+      navigate(routes.login);
+    } catch (error) {
+      console.error('회원가입 실패:', error);
+      // 회원가입 실패 메시지
+      Swal.fire({
+        icon: 'error',
+        title: '회원가입 실패',
+        text: '에러가 발생했습니다. 다시 시도해주세요.',
+      });
+    }
   };
 
   // 폼 유효성 검증 및 버튼 활성화 상태 업데이트
@@ -99,7 +123,6 @@ const RegisterPage = () => {
       <RegisterContainer>
         <Title>마인드로잉 회원가입</Title>
         <RegisterForm onSubmit={handleSubmit}>
-          {' '}
           {/* 폼 제출 시 handleSubmit 호출 */}
           <FormItem>
             <label>
@@ -193,7 +216,6 @@ const RegisterPage = () => {
               </CheckboxLabel>
             </CheckboxWrapper>
           </FormItem>
-          {/* 버튼에 prop 전달 시, props가 DOM으로 전달되지 않도록 처리 */}
           <RegisterButton type="submit" disabled={!isButtonEnabled} $isEnabled={isButtonEnabled}>
             회원가입
           </RegisterButton>
