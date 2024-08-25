@@ -1,4 +1,5 @@
 import React from 'react';
+import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import PageTemplate from './../../components/templates/PageTemplate';
 import HomeHeader from './../../components/layouts/HomeHeader';
@@ -7,11 +8,51 @@ import Carousel from '../../components/layouts/Carousel';
 import color_pallete_icon from '../../assets/images/color_palette.png';
 import inspection_icon from '../../assets/images/Inspection.png';
 import benefit_icon from '../../assets/images/benefit_info.png';
+import center_icon from '../../assets/images/center.png';
 import { IoIosArrowForward } from 'react-icons/io';
 import { Link } from 'react-router-dom';
 import routes from '../../constant/routes';
 
+const { kakao } = window;
+
 const HomePage = () => {
+   // 기본 좌표: 서울
+  const [userLocation, setUserLocation] = useState({ lat: 37.566826, lng: 126.9786567 });
+  
+  useEffect(() => {
+    // 사용자 위치 가져오기
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const latitude = position.coords.latitude;
+          const longitude = position.coords.longitude;
+          setUserLocation({ lat: latitude, lng: longitude });
+        },
+        (error) => {
+          console.error("GPS를 불러오는데 실패했습니다.", error);
+        }
+      );
+    } else {
+      console.error("Geolocation을 사용할 수 없습니다.");
+    }
+  }, []);
+
+  useEffect(() => {
+    const container = document.getElementById('map');
+    const options = {
+      center: new kakao.maps.LatLng(userLocation.lat, userLocation.lng),
+      level: 3,
+    };
+    const map = new kakao.maps.Map(container, options);
+
+    // 사용자 위치에 마커 추가
+    const markerPosition = new kakao.maps.LatLng(userLocation.lat, userLocation.lng);
+    const marker = new kakao.maps.Marker({
+      position: markerPosition,
+    });
+    marker.setMap(map);
+  }, [userLocation]);
+
   return (
     <PageTemplate>
       <HomeHeader />
@@ -49,12 +90,23 @@ const HomePage = () => {
         <ButtonCardLayout>
           <StyledLink to={routes.benefitList}>
             <ButtonCard to={routes.benefitList}>
-              <text>육아 혜택 정보 확인하기</text>
+              <h1>육아 혜택 정보 확인하기</h1>
               <IoIosArrowForward size={20} />
               <img src={benefit_icon} alt="benefit" />
             </ButtonCard>
           </StyledLink>
         </ButtonCardLayout>
+        <SearchCenterLayout>
+          <div>
+            <img src={center_icon} alt="center" />
+            <h1>주변 센터 찾기</h1>
+            <StyledLink to={routes.centerList}>
+              <p>더보기</p>
+            </StyledLink>
+          </div>
+          <Map id="map"></Map>
+          <MapPadding />
+        </SearchCenterLayout>
       </ScrollableContent>
       <Nav currentPage="homePage" />
     </PageTemplate>
@@ -145,7 +197,7 @@ const ButtonCard = styled.div`
   align-items: center;
   justify-content: space-between;
 
-  text {
+  h1 {
     font-size: 20px;
     font-weight: bold;
   }
@@ -156,17 +208,25 @@ const StyledLink = styled(Link)`
   color: #000;
 `;
 
-const MapContainer = styled.div`
+const SearchCenterLayout = styled.div`
   width: 100%;
+  height: 160px;
   padding: 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  div {
+    display: flex;
+    align-items: center;
 
-  h2 {
-    margin-bottom: 10px;
-    font-size: 18px;
+    h1 {
+      font-size: 20px;
+      font-weight: bold;
+      margin-left: 10px;
+    }
+
+    p {
+      font-size: 14px;
+      margin-left: 10px;
+      color: #b3b3b3;
+    }
   }
 `;
 
@@ -174,6 +234,13 @@ const Map = styled.div`
   width: 340px;
   height: 340px;
   border: 1px solid #ddd;
+  border-radius: 10px;
+  margin-top: 10px;
+`;
+
+const MapPadding = styled.div`
+  width: 100%;
+  height : 10px;
 `;
 
 export default HomePage;
