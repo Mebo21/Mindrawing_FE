@@ -44,7 +44,7 @@ const HeaderBar = styled.div`
   width: 100%;
   height: 60px;
   background-color: #fff;
-  border-bottom: 2px solid #c9c9c9;
+  border-bottom: 1px solid #c9c9c9;
   padding: 10px;
   display: flex;
   justify-content: space-between;
