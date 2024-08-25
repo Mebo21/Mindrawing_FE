@@ -18,7 +18,12 @@ const LoginPage = () => {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value }); // 폼 데이터 업데이트
+    setFormData({ ...formData, [name]: value });
+
+    // 입력하면 해당 필드의 에러 상태 초기화
+    if (value !== '') {
+      setErrors({ ...errors, [name]: false });
+    }
   };
 
   const handleSubmit = (e) => {
@@ -69,7 +74,7 @@ const LoginPage = () => {
             </Label>
             <PasswordWrapper>
               <input
-                type={showPassword ? 'text' : 'password'} // 비밀번호 가리기/보이기
+                type={showPassword ? 'text' : 'password'}
                 name="password"
                 placeholder="비밀번호를 입력해주세요"
                 value={formData.password}
@@ -123,7 +128,7 @@ const LoginForm = styled.form`
   input {
     width: 100%;
     padding: 10px;
-    border: 2px solid #C9C9C9;
+    border: 2px solid #c9c9c9;
     border-radius: 10px;
     font-size: 14px;
     font-family: 'Pretendard', sans-serif;
@@ -147,7 +152,8 @@ const FormItem = styled.div`
 const Label = styled.label`
   font-size: 16px;
   margin-bottom: 10px;
-  display: block;
+  display: flex;
+  align-items: center;
   font-family: 'Pretendard', sans-serif;
 `;
 
