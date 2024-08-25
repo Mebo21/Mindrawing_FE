@@ -11,7 +11,7 @@ export const axiosInstance = axios.create({
   headers: {
     'Content-Type': 'application/json',
   },
-  withCredentials: true, // 쿠키를 서버로 전송할 수 있도록 설정
+  withCredentials: true,
 });
 
 // 요청 인터셉터
