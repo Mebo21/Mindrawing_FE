@@ -117,6 +117,7 @@ const ScrollableContent = styled.div`
   width: 100%;
   height: 660px;
   overflow-y: auto; /* 세로 스크롤 활성화 */
+  overflow-x: hidden; /* 가로 스크롤 비활성화 */
 
   /* 스크롤바 스타일 */
   /* 그냥 안보이게 하는걸로 결정 */
@@ -231,7 +232,7 @@ const SearchCenterLayout = styled.div`
 `;
 
 const Map = styled.div`
-  width: 340px;
+  width: 100%;
   height: 340px;
   border: 1px solid #ddd;
   border-radius: 10px;
