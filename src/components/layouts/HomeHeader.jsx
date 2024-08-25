@@ -22,12 +22,22 @@ const HomeHeader = () => {
           <img src={logo} alt="logo" />
           <HeaderText>마인드로잉</HeaderText>
         </HeaderLeftDiv>
-        <FaBell size="25" onClick={handleBellClick} /> {/* 클릭 시 모달 열기 */}
+        {/* FaBell 아이콘을 스타일링한 StyledBellIcon으로 교체 */}
+        <StyledBellIcon size="25" onClick={handleBellClick} isModalOpen={isModalOpen} />
       </HeaderBar>
       {isModalOpen && <NotificationModal onClose={handleModalClose} />} {/* 모달 표시 */}
     </>
   );
 };
+
+// FaBell 스타일링
+const StyledBellIcon = styled(FaBell)`
+  cursor: pointer; // 마우스를 올렸을 때 포인터로 변경
+  color: ${(props) => (props.isModalOpen ? '#7469b6' : '#000')}; // 모달 상태에 따라 색상 변경
+  &:hover {
+    color: #7469b6; // 마우스를 올리면 색상 변경
+  }
+`;
 
 // HeaderBar 컴포넌트 정의
 const HeaderBar = styled.div`
