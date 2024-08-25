@@ -1,5 +1,6 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import routes from './constant/routes';
+import ProtectedRoute from './components/templates/ProtectedRoute';
 import HomePage from './pages/defaultPage/Homepage';
 import LoginPage from './pages/defaultPage/LoginPage';
 import RegisterPage from './pages/defaultPage/RegisterPage';
@@ -33,20 +34,76 @@ function App() {
           <Route path={routes.analysisIntro} element={<AnalysisIntroPage />} />
           <Route path={routes.analysisInput} element={<AnalysisInputPage />} />
           <Route path={routes.analysisSummary} element={<AnalysisSummaryPage />} />
-          <Route path={routes.analysisDetail} element={<AnalysisDetailPage />} />
-          <Route path={routes.analysisHistory} element={<AnalysisHistoryPage />} />
+          <Route
+            path={routes.analysisDetail}
+            element={
+              <ProtectedRoute>
+                <AnalysisDetailPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path={routes.analysisHistory}
+            element={
+              <ProtectedRoute>
+                <AnalysisHistoryPage />
+              </ProtectedRoute>
+            }
+          />
           <Route path={routes.centerList} element={<CenterListPage />} />
           <Route path={routes.centerSelect} element={<CenterSelectPage />} />
           <Route path={routes.centerInfo} element={<CenterInfoPage />} />
           <Route path={routes.centerReservation} element={<CenterReservationPage />} />
           <Route path={routes.benefitList} element={<BenefitListPage />} />
           <Route path={routes.benefitDetail} element={<BenefitDetailPage />} />
-          <Route path={routes.mypage} element={<MyPage />} />
-          <Route path={routes.mypageChildInfoRegister} element={<MyPageChildInfoRegisterPage />} />
-          <Route path={routes.mypagePartnerCenterRegister} element={<MyPagePartnerCenterRegisterPage />} />
-          <Route path={routes.mypagePartnerCenterRequestList} element={<MyPagePartnerCenterRequestListPage />} />
-          <Route path={routes.mypagePartnerCenterRequestManage} element={<MyPagePartnerCenterRequestManagePage />} />
-          <Route path={routes.mypageUserInfoEdit} element={<MyPageUserInfoEditPage />} />
+          <Route
+            path={routes.mypage}
+            element={
+              <ProtectedRoute>
+                <MyPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path={routes.mypageChildInfoRegister}
+            element={
+              <ProtectedRoute>
+                <MyPageChildInfoRegisterPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path={routes.mypagePartnerCenterRegister}
+            element={
+              <ProtectedRoute>
+                <MyPagePartnerCenterRegisterPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path={routes.mypagePartnerCenterRequestList}
+            element={
+              <ProtectedRoute requiredAdmin={'true'}>
+                <MyPagePartnerCenterRequestListPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path={routes.mypagePartnerCenterRequestManage}
+            element={
+              <ProtectedRoute requiredAdmin={'true'}>
+                <MyPagePartnerCenterRequestManagePage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path={routes.mypageUserInfoEdit}
+            element={
+              <ProtectedRoute>
+                <MyPageUserInfoEditPage />
+              </ProtectedRoute>
+            }
+          />
           <Route path={routes.error} element={<ErrorPage />} />
         </Routes>
       </BrowserRouter>
