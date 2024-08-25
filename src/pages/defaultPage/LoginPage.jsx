@@ -3,14 +3,18 @@ import styled from 'styled-components';
 import { FaEye, FaEyeSlash } from 'react-icons/fa'; // 눈 아이콘 임포트
 import PageTemplate from '../../components/templates/PageTemplate';
 import login_logo from '../../assets/logos/login_logo.png';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom'; // useNavigate 추가
 import Header from '../../components/layouts/Header';
 import Nav from './../../components/layouts/Nav';
+import { loginUser } from '../../apis/login'; // loginUser 임포트
+import routes from './../../constant/routes';
+import Swal from 'sweetalert2';
 
 const LoginPage = () => {
   const [showPassword, setShowPassword] = useState(false); // 비밀번호 보이기 상태
   const [formData, setFormData] = useState({ id: '', password: '' }); // 폼 데이터 상태
   const [errors, setErrors] = useState({ id: false, password: false }); // 에러 상태 관리
+  const navigate = useNavigate(); // 페이지 이동을 위한 네비게이트 함수
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
@@ -26,7 +30,29 @@ const LoginPage = () => {
     }
   };
 
-  const handleSubmit = (e) => {
+  // 액세스 토큰을 디코딩하는 함수
+  const decodeJWT = (token) => {
+    // 토큰은 header.payload.signature 형태이므로 .으로 구분하여 split
+    const payload = token.split('.')[1]; // 페이로드 부분을 추출
+
+    // Base64 URL 인코딩된 값을 디코딩 (atob를 사용하여 Base64 디코딩)
+    // Base64 URL Safe -> Base64 변환
+    const decodedPayload = atob(payload.replace(/-/g, '+').replace(/_/g, '/'));
+
+    // JSON 형식으로 파싱
+    const decodedData = JSON.parse(decodedPayload);
+    return decodedData;
+  };
+
+  // 토큰에서 nickname과 auth 정보를 추출하는 함수
+  const getUserInfoFromToken = (token) => {
+    const decodedData = decodeJWT(token);
+    // console.log('Decoded Data:', decodedData);
+    localStorage.setItem('nickname', decodedData.nickname);
+    localStorage.setItem('admin', decodedData.admin);
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     // 입력값이 없을 때 에러 상태 업데이트
@@ -37,10 +63,29 @@ const LoginPage = () => {
 
     setErrors(newErrors);
 
-    // 에러가 없을 경우에만 로그인 처리 (여기서는 콘솔 출력)
+    // 에러가 없을 경우에만 로그인 처리
     if (!newErrors.id && !newErrors.password) {
-      console.log('ID:', formData.id);
-      console.log('Password:', formData.password);
+      try {
+        const response = await loginUser(formData); // loginUser 함수 호출
+        // 로그인 성공 메시지
+        Swal.fire({
+          icon: 'success',
+          title: '로그인 성공!',
+          text: '마인드로잉에 오신걸 환영합니다😉',
+        });
+        // 로컬 스토리지에 액세스 토큰 저장 & 유저 정보 추출
+        localStorage.setItem('accessToken', response.access_token);
+        getUserInfoFromToken(response.access_token);
+        // 회원가입 성공 후 로그인 페이지로 이동
+        navigate(routes.home);
+      } catch (error) {
+        // 회원가입 실패 메시지
+        Swal.fire({
+          icon: 'error',
+          title: '회원가입 실패',
+          text: '에러가 발생했습니다😥 다시 시도해주세요!',
+        });
+      }
     }
   };
 
