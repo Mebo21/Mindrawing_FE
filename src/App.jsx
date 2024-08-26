@@ -21,6 +21,7 @@ import MyPagePartnerCenterRegisterPage from './pages/myPage/MyPagePartnerCenterR
 import MyPagePartnerCenterRequestListPage from './pages/myPage/MyPagePartnerCenterRequestListPage';
 import MyPagePartnerCenterRequestManagePage from './pages/myPage/MyPagePartnerCenterRequestManagePage';
 import MyPageUserInfoEditPage from './pages/myPage/MyPageUserInfoEditPage';
+import MyPageBenefitWrite from './pages/myPage/MyPageBenefitWrite';
 import ErrorPage from './pages/ErrorPage';
 
 function App() {
@@ -32,8 +33,14 @@ function App() {
           <Route path={routes.login} element={<LoginPage />} />
           <Route path={routes.register} element={<RegisterPage />} />
           <Route path={routes.analysisIntro} element={<AnalysisIntroPage />} />
-          <Route path={routes.analysisInput} element={<AnalysisInputPage />} />
-          <Route path={routes.analysisSummary} element={<AnalysisSummaryPage />} />
+          <Route
+            path={routes.analysisInput}
+            element={
+              <ProtectedRoute>
+                <AnalysisInputPage />
+              </ProtectedRoute>
+            }
+          />
           <Route
             path={routes.analysisDetail}
             element={
@@ -53,7 +60,14 @@ function App() {
           <Route path={routes.centerList} element={<CenterListPage />} />
           <Route path={routes.centerSelect} element={<CenterSelectPage />} />
           <Route path={routes.centerInfo} element={<CenterInfoPage />} />
-          <Route path={routes.centerReservation} element={<CenterReservationPage />} />
+          <Route
+            path={routes.centerReservation}
+            element={
+              <ProtectedRoute>
+                <CenterReservationPage />
+              </ProtectedRoute>
+            }
+          />
           <Route path={routes.benefitList} element={<BenefitListPage />} />
           <Route path={routes.benefitDetail} element={<BenefitDetailPage />} />
           <Route
@@ -101,6 +115,14 @@ function App() {
             element={
               <ProtectedRoute>
                 <MyPageUserInfoEditPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path={routes.mypageBenefitWrite}
+            element={
+              <ProtectedRoute requiredAdmin={'true'}>
+                <MyPageBenefitWrite />
               </ProtectedRoute>
             }
           />

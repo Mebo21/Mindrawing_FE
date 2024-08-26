@@ -26,6 +26,7 @@ const routes = {
   mypagePartnerCenterRegister: '/mypage/partner-center-register',
   mypageUserInfoEdit: '/mypage/user-info-edit',
   mypageChildInfoRegister: '/mypage/child-info-edit',
+  mypageBenefitWrite: '/mypage/benefit-write',
 
   // 마이페이지 제휴센터 관련 페이지들
   mypagePartnerCenterRequestList: '/mypage/partner-center-request-list',
