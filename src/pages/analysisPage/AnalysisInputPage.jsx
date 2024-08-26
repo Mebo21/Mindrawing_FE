@@ -26,7 +26,7 @@ const AnalysisInputPage = () => {
     onSuccess: (data) => {
       console.log('데이터 전송 성공:', data);
       setIsLoading(false); // 데이터 전송 완료 후 로딩 상태 해제
-      navigate('/analysis-summary/1');
+      navigate(`/analysis-summary/${randomNumber}`); // 페이지 이동
     },
     onError: (error) => {
       console.error('데이터 전송 실패:', error);
