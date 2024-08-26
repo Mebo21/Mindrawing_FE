@@ -65,16 +65,16 @@ const AnalysisInputPage = () => {
       formData.append('name', name);
       formData.append('random_number', stringNumber);
       formData.append('id', localStorage.getItem('id'));
-      console.log('id : ', localStorage.getItem('id'));
+      console.log('id : ', typeof localStorage.getItem('id'), localStorage.getItem('id'));
 
       console.log('formData : ', formData);
       console.log('hImageRenamed : ', typeof hImageRenamed, hImageRenamed);
       console.log('tImageRenamed : ', typeof tImageRenamed, tImageRenamed);
       console.log('pImageRenamed : ', typeof pImageRenamed, pImageRenamed);
       console.log('age : ', typeof age, age);
-      console.log('gender', typeof gender, gender);
-      console.log('name', typeof name, name);
-      console.log('random_number', typeof stringNumber, stringNumber);
+      console.log('gender : ', typeof gender, gender);
+      console.log('name : ', typeof name, name);
+      console.log('random_number : ', typeof stringNumber, stringNumber);
       console.log('files : ', typeof files, files);
 
       // files.forEach((file) => {
