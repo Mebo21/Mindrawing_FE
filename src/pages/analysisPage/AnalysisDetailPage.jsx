@@ -1,7 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import PageTemplate from '../../components/templates/PageTemplate';
-import sampleImage from '../../assets/images/Sample_Image.png';
+import sampleImage from '../../assets/images/H_Result_Sample.png';
+import sampleImage2 from '../../assets/images/T_Result_Sample.png';
+import sampleImage3 from '../../assets/images/P_Result_Sample.png';
 import Header from '../../components/layouts/Header';
 import { useNavigate } from 'react-router-dom';
 import routes from '../../constant/routes';
@@ -26,20 +28,20 @@ const AnalysisDetailPage = () => {
           <AnalysisSection>
             <h2>아이가 그린 T(Tree) 그림의 심리 분석 결과</h2>
             <ImageWrapper>
-              <ResultImage src={sampleImage} alt="Tree Drawing" />
+              <ResultImage src={sampleImage2} alt="Tree Drawing" />
             </ImageWrapper>
-            <DetailText>창문: ~~~</DetailText>
-            <DetailText>문: ~~~</DetailText>
-            <DetailText>굴뚝: ~~~</DetailText>
+            <DetailText>수관: ~~~</DetailText>
+            <DetailText>가지: ~~~</DetailText>
+            <DetailText>뿌리: ~~~</DetailText>
           </AnalysisSection>
           <AnalysisSection>
             <h2>아이가 그린 P(Person) 그림의 심리 분석 결과</h2>
             <ImageWrapper>
-              <ResultImage src={sampleImage} alt="Tree Drawing" />
+              <ResultImage src={sampleImage3} alt="Tree Drawing" />
             </ImageWrapper>
-            <DetailText>창문: ~~~</DetailText>
-            <DetailText>문: ~~~</DetailText>
-            <DetailText>굴뚝: ~~~</DetailText>
+            <DetailText>사람전체: ~~~</DetailText>
+            <DetailText>눈: ~~~</DetailText>
+            <DetailText>운동화: ~~~</DetailText>
           </AnalysisSection>
         </AnalysisResultWrapper>
       </AnalysisResultContainer>

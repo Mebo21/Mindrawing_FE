@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import PageTemplate from '../../components/templates/PageTemplate';
 import Loader from '../../components/layouts/Loader'; // Assuming you have a Loader component
-import sampleImage from '../../assets/images/Sample_Image.png';
+import sampleImage from '../../assets/images/H_Result_Sample.png';
 import routes from '../../constant/routes';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
