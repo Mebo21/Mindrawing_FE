@@ -17,7 +17,7 @@ const AnalysisInputPage = () => {
   const [gender, setGender] = useState(null);
   const [name, setName] = useState('null');
   const [userId, setUserId] = useState(null);
-  const [randomNumber, setRandomNumber] = useState(Math.floor(Math.random() * 1000000)); // 난수 생성
+  const [randomNumber, setRandomNumber] = useState(Math.floor(Date.now() * Math.random())); // 난수 생성
   const [isLoading, setIsLoading] = useState(false); // 로딩 상태 추가
   const navigate = useNavigate();
 
@@ -26,7 +26,7 @@ const AnalysisInputPage = () => {
     onSuccess: (data) => {
       console.log('데이터 전송 성공:', data);
       setIsLoading(false); // 데이터 전송 완료 후 로딩 상태 해제
-      navigate(`/analysis-summary/${randomNumber}`); // 페이지 이동
+      navigate(`/analysis-detail/${randomNumber}`); // 페이지 이동
     },
     onError: (error) => {
       console.error('데이터 전송 실패:', error);
@@ -98,6 +98,7 @@ const AnalysisInputPage = () => {
       //   },
       // });
       mutation.mutate(formData);
+      setIsLoading(true); // 데이터 전송 중 로딩 상태로 변경
     });
   };
 
