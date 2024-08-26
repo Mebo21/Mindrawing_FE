@@ -50,6 +50,7 @@ const LoginPage = () => {
     // console.log('Decoded Data:', decodedData);
     localStorage.setItem('nickname', decodedData.nickname);
     localStorage.setItem('admin', decodedData.admin);
+    localStorage.setItem('id', decodedData.sub || decodedData.userId);
   };
 
   const handleSubmit = async (e) => {
