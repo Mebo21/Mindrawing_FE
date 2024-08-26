@@ -18,18 +18,26 @@ const NotificationModal = ({ onClose }) => {
           <FaTimes className="closeIcon" onClick={onClose} /> {/* 닫기 아이콘 */}
         </ModalHeader>
         <NotificationList>
-          {[1, 2, 3].map((_, index) => (
-            <NotificationItem key={index}>
-              <div>
-                <FaBell />
-              </div>
-              <div>
-                <h3>알림 제목</h3>
-                <p>알림 내용이 여기에 들어갑니다!</p>
-                <p>알림 내용이 여기에 들어갑니다!</p>
-              </div>
-            </NotificationItem>
-          ))}
+          <NotificationItem>
+            <div>
+              <FaBell />
+            </div>
+            <div>
+              <h3>8월 달의 육아혜택 지원사업 기간이 얼마 남지 않았습니다!</h3>
+              <p>08.29에 정부에서 지원하는 OO사업이 종료됩니다.</p>
+              <p>지금 바로 잊지말고 신청하세요!</p>
+            </div>
+          </NotificationItem>
+          <NotificationItem>
+            <div>
+              <FaBell />
+            </div>
+            <div>
+              <h3>9월 달에 찾아올 육아혜택에는 어떤 것들이 있을까?!</h3>
+              <p>육아 혜택 정보 모음 탭에서 확인해보세요!</p>
+              <p>GoGoGo~~😘</p>
+            </div>
+          </NotificationItem>
         </NotificationList>
       </ModalContent>
     </ModalOverlay>
