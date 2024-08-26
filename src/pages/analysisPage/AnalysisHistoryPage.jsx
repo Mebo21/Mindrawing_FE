@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import PageTemplate from '../../components/templates/PageTemplate';
 import Nav from '../../components/layouts/Nav';
 import HistoryItem from '../../components/layouts/HistoryItem';
+import sampleImage from '../../assets/images/Sample_Image.png';
+import sampleImage2 from '../../assets/images/H_Result_Sample.png';
 import Loader from '../../components/layouts/Loader';
 import { useQuery } from '@tanstack/react-query';
 
@@ -13,13 +15,14 @@ const AnalysisHistoryPage = () => {
         <HeaderText>그림 심리분석 내역</HeaderText>
       </Header>
       <HistoryContainer>
-        <HistoryItem />
-        <HistoryItem />
-        <HistoryItem />
-        <HistoryItem />
-        <HistoryItem />
-        <HistoryItem />
-        <HistoryItem />
+        <HistoryItem sampleImage={sampleImage2} />
+        <HistoryItem sampleImage={sampleImage} />
+        <HistoryItem sampleImage={sampleImage} />
+        <HistoryItem sampleImage={sampleImage} />
+        <HistoryItem sampleImage={sampleImage} />
+        <HistoryItem sampleImage={sampleImage} />
+        <HistoryItem sampleImage={sampleImage} />
+        <HistoryItem sampleImage={sampleImage} />
       </HistoryContainer>
       <Nav currentPage="analysisHistoryPage" />
     </PageTemplate>

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import sampleImage from '../../assets/images/Sample_image.png';
 import { useNavigate } from 'react-router-dom';
 
-const HistoryItem = () => {
+const HistoryItem = ({ sampleImage }) => {
   const navigate = useNavigate();
 
   return (
