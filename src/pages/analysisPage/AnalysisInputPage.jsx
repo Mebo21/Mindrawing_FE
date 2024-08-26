@@ -114,7 +114,7 @@ const AnalysisInputPage = () => {
 
   return (
     <PageTemplate>
-      {isLoading && <Loader description={`마인드로잉이 그림을 \n꼼꼼히 살펴보고 있어요!..🤩"`} />}
+      {isLoading && <Loader description={`마인드로잉이 그림을 \n꼼꼼히 살펴보고 있어요!..🤩`} />}
       {/* 로딩 상태일 때 Loader 컴포넌트 표시 */}
       {!isLoading && (
         <>
