@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import PageTemplate from '../../components/templates/PageTemplate';
 import Nav from '../../components/layouts/Nav';
-import { AiOutlineLeft } from 'react-icons/ai';
+import { IoIosArrowBack } from 'react-icons/io';
 import sampleImage from '../../assets/images/Sample_image.png';
 import routes from '../../constant/routes';
 
@@ -33,7 +33,7 @@ const CenterInfoPage = () => {
       {/* 상단 이미지 및 뒤로가기 버튼 영역 */}
       <ImageHeader>
         <BackButton onClick={() => navigate(-1)}>
-          <AiOutlineLeft size={24} />
+          <IoIosArrowBack size={30} />
         </BackButton>
         <CenterImage src={sampleImage} alt="센터 이미지" />
       </ImageHeader>
@@ -83,8 +83,8 @@ const ImageHeader = styled.div`
 
 const BackButton = styled.button`
   position: absolute;
-  top: 20px;
-  left: 20px;
+  top: 14px;
+  left: 10px;
   background: none;
   border: none;
   cursor: pointer;
