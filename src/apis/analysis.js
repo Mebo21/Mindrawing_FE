@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const analysisInstance = axios.create({
   baseURL: import.meta.env.VITE_AI_API_URL,
-  timeout: 5000,
+  timeout: 100000,
   headers: {
     'Content-Type': 'multipart/form-data',
   },
@@ -30,6 +30,7 @@ analysisInstance.interceptors.response.use(
 
 const uploadDatas = (formData) => {
   console.log('formData : ', formData);
+  console.log('전송 시도');
   return analysisInstance.post('/predict', formData);
 };
 

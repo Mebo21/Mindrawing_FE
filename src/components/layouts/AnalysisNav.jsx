@@ -1,9 +1,11 @@
+// 현재 사용 안함
+
 import React from 'react';
 import styled from 'styled-components';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 import { useNavigate } from 'react-router-dom';
 
-const AnalysisNav = ({ isNextButtonEnabled }) => {
+const AnalysisNav = ({ isNextButtonEnabled, onClickNext }) => {
   const navigate = useNavigate();
 
   const handlePrevious = () => {
@@ -11,8 +13,15 @@ const AnalysisNav = ({ isNextButtonEnabled }) => {
   };
 
   const handleNext = () => {
-    if (isNextButtonEnabled) {
-      navigate('/analysis-summary/1');
+    if (isNextButtonEnabled && onClickNext) {
+      // onClickNext가 Promise를 반환하므로, then을 사용 가능
+      onClickNext()
+        .then(() => {
+          navigate('/analysis-summary/1'); // 성공 시 페이지 이동
+        })
+        .catch((error) => {
+          console.error('데이터 전송 실패:', error); // 에러 처리
+        });
     }
   };
 
