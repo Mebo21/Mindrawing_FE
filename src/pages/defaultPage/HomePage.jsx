@@ -16,9 +16,9 @@ import routes from '../../constant/routes';
 const { kakao } = window;
 
 const HomePage = () => {
-   // 기본 좌표: 서울
+  // 기본 좌표: 서울
   const [userLocation, setUserLocation] = useState({ lat: 37.566826, lng: 126.9786567 });
-  
+
   useEffect(() => {
     // 사용자 위치 가져오기
     if (navigator.geolocation) {
@@ -29,11 +29,11 @@ const HomePage = () => {
           setUserLocation({ lat: latitude, lng: longitude });
         },
         (error) => {
-          console.error("GPS를 불러오는데 실패했습니다.", error);
-        }
+          console.error('GPS를 불러오는데 실패했습니다.', error);
+        },
       );
     } else {
-      console.error("Geolocation을 사용할 수 없습니다.");
+      console.error('Geolocation을 사용할 수 없습니다.');
     }
   }, []);
 
@@ -241,7 +241,7 @@ const Map = styled.div`
 
 const MapPadding = styled.div`
   width: 100%;
-  height : 10px;
+  height: 10px;
 `;
 
 export default HomePage;
