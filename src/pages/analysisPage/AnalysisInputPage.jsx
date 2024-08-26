@@ -6,7 +6,7 @@ import { GoUpload } from 'react-icons/go';
 import { useMutation } from '@tanstack/react-query';
 import { useNavigate } from 'react-router-dom';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
-import uploadDatas from '../../apis/analysis';
+import { uploadDatas } from '../../apis/analysis';
 import Loader from '../../components/layouts/Loader';
 
 const AnalysisInputPage = () => {
@@ -114,123 +114,126 @@ const AnalysisInputPage = () => {
 
   return (
     <PageTemplate>
-      <Header title={'그림심리분석 정보 입력'} />
-      {isLoading && <Loader />} {/* 로딩 상태일 때 Loader 컴포넌트 표시 */}
+      {isLoading && <Loader description={`마인드로잉이 그림을 \n꼼꼼히 살펴보고 있어요!..🤩"`} />}
+      {/* 로딩 상태일 때 Loader 컴포넌트 표시 */}
       {!isLoading && (
-        <FormContainer>
-          <Title>
-            <b>아이의 H/T/P 그림을 차례대로 업로드 해주세요! </b>
-            <span className="required">*</span>
-          </Title>
+        <>
+          <Header title={'그림심리분석 정보 입력'} />
+          <FormContainer>
+            <Title>
+              <b>아이의 H/T/P 그림을 차례대로 업로드 해주세요! </b>
+              <span className="required">*</span>
+            </Title>
 
-          {/* H 그림 업로드 */}
-          <ImageUploadSection>
-            <Label>
-              H 그림 (House, 집 단독 그림) <span className="required">*</span>
-            </Label>
-            <ImageUploadBox onClick={() => document.getElementById('hUpload').click()}>
-              {hImage ? (
-                <PreviewImage src={URL.createObjectURL(hImage)} alt="H 그림" />
-              ) : (
-                <UploadContent>
-                  <GoUpload size={40} color="c9c9c9" />
-                  <span>그림 사진 업로드하기</span>
-                </UploadContent>
-              )}
-              <input
-                id="hUpload"
-                type="file"
-                accept="image/*"
-                onChange={(e) => handleImageUpload(e, setHImage)}
-                style={{ display: 'none' }}
-              />
-            </ImageUploadBox>
-          </ImageUploadSection>
+            {/* H 그림 업로드 */}
+            <ImageUploadSection>
+              <Label>
+                H 그림 (House, 집 단독 그림) <span className="required">*</span>
+              </Label>
+              <ImageUploadBox onClick={() => document.getElementById('hUpload').click()}>
+                {hImage ? (
+                  <PreviewImage src={URL.createObjectURL(hImage)} alt="H 그림" />
+                ) : (
+                  <UploadContent>
+                    <GoUpload size={40} color="c9c9c9" />
+                    <span>그림 사진 업로드하기</span>
+                  </UploadContent>
+                )}
+                <input
+                  id="hUpload"
+                  type="file"
+                  accept="image/*"
+                  onChange={(e) => handleImageUpload(e, setHImage)}
+                  style={{ display: 'none' }}
+                />
+              </ImageUploadBox>
+            </ImageUploadSection>
 
-          {/* T 그림 업로드 */}
-          <ImageUploadSection>
-            <Label>
-              T 그림 (Tree, 나무 단독 그림) <span className="required">*</span>
-            </Label>
-            <ImageUploadBox onClick={() => document.getElementById('tUpload').click()}>
-              {tImage ? (
-                <PreviewImage src={URL.createObjectURL(tImage)} alt="T 그림" />
-              ) : (
-                <UploadContent>
-                  <GoUpload size={40} color="c9c9c9" />
-                  <span>그림 사진 업로드하기</span>
-                </UploadContent>
-              )}
-              <input
-                id="tUpload"
-                type="file"
-                accept="image/*"
-                onChange={(e) => handleImageUpload(e, setTImage)}
-                style={{ display: 'none' }}
-              />
-            </ImageUploadBox>
-          </ImageUploadSection>
+            {/* T 그림 업로드 */}
+            <ImageUploadSection>
+              <Label>
+                T 그림 (Tree, 나무 단독 그림) <span className="required">*</span>
+              </Label>
+              <ImageUploadBox onClick={() => document.getElementById('tUpload').click()}>
+                {tImage ? (
+                  <PreviewImage src={URL.createObjectURL(tImage)} alt="T 그림" />
+                ) : (
+                  <UploadContent>
+                    <GoUpload size={40} color="c9c9c9" />
+                    <span>그림 사진 업로드하기</span>
+                  </UploadContent>
+                )}
+                <input
+                  id="tUpload"
+                  type="file"
+                  accept="image/*"
+                  onChange={(e) => handleImageUpload(e, setTImage)}
+                  style={{ display: 'none' }}
+                />
+              </ImageUploadBox>
+            </ImageUploadSection>
 
-          {/* P 그림 업로드 */}
-          <ImageUploadSection>
-            <Label>
-              P 그림 (Person, 사람 단독 그림) <span className="required">*</span>
-            </Label>
-            <ImageUploadBox onClick={() => document.getElementById('pUpload').click()}>
-              {pImage ? (
-                <PreviewImage src={URL.createObjectURL(pImage)} alt="P 그림" />
-              ) : (
-                <UploadContent>
-                  <GoUpload size={40} color="c9c9c9" />
-                  <span>그림 사진 업로드하기</span>
-                </UploadContent>
-              )}
-              <input
-                id="pUpload"
-                type="file"
-                accept="image/*"
-                onChange={(e) => handleImageUpload(e, setPImage)}
-                style={{ display: 'none' }}
-              />
-            </ImageUploadBox>
-          </ImageUploadSection>
+            {/* P 그림 업로드 */}
+            <ImageUploadSection>
+              <Label>
+                P 그림 (Person, 사람 단독 그림) <span className="required">*</span>
+              </Label>
+              <ImageUploadBox onClick={() => document.getElementById('pUpload').click()}>
+                {pImage ? (
+                  <PreviewImage src={URL.createObjectURL(pImage)} alt="P 그림" />
+                ) : (
+                  <UploadContent>
+                    <GoUpload size={40} color="c9c9c9" />
+                    <span>그림 사진 업로드하기</span>
+                  </UploadContent>
+                )}
+                <input
+                  id="pUpload"
+                  type="file"
+                  accept="image/*"
+                  onChange={(e) => handleImageUpload(e, setPImage)}
+                  style={{ display: 'none' }}
+                />
+              </ImageUploadBox>
+            </ImageUploadSection>
 
-          {/* 나이 입력 */}
-          <SelectSection>
-            <Label>
-              아이의 나이를 입력해주세요! <span className="required">*</span>
-            </Label>
-            <Select value={age} onChange={(e) => setAge(e.target.value)}>
-              <option value="">아이의 나이</option>
-              {Array.from({ length: 13 }, (_, i) => i + 1).map((num) => (
-                <option key={num} value={num}>
-                  {num}세
-                </option>
-              ))}
-            </Select>
-          </SelectSection>
+            {/* 나이 입력 */}
+            <SelectSection>
+              <Label>
+                아이의 나이를 입력해주세요! <span className="required">*</span>
+              </Label>
+              <Select value={age} onChange={(e) => setAge(e.target.value)}>
+                <option value="">아이의 나이</option>
+                {Array.from({ length: 13 }, (_, i) => i + 1).map((num) => (
+                  <option key={num} value={num}>
+                    {num}세
+                  </option>
+                ))}
+              </Select>
+            </SelectSection>
 
-          {/* 성별 선택 */}
-          <SelectSection>
-            <Label>
-              아이의 성별을 선택해주세요! <span className="required">*</span>
-            </Label>
-            <GenderSelect>
-              <GenderButton selected={gender === '남자'} onClick={() => setGender('남자')}>
-                남자
-              </GenderButton>
-              <GenderButton selected={gender === '여자'} onClick={() => setGender('여자')}>
-                여자
-              </GenderButton>
-            </GenderSelect>
-          </SelectSection>
+            {/* 성별 선택 */}
+            <SelectSection>
+              <Label>
+                아이의 성별을 선택해주세요! <span className="required">*</span>
+              </Label>
+              <GenderSelect>
+                <GenderButton selected={gender === '남자'} onClick={() => setGender('남자')}>
+                  남자
+                </GenderButton>
+                <GenderButton selected={gender === '여자'} onClick={() => setGender('여자')}>
+                  여자
+                </GenderButton>
+              </GenderSelect>
+            </SelectSection>
 
-          {/* 이름 입력 (선택 필드) */}
-          <SelectSection>
-            <Label>아이의 이름을 입력해주세요! (선택)</Label>
-            <NameInput type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="ex. 홍길동" />
-          </SelectSection>
-        </FormContainer>
+            {/* 이름 입력 (선택 필드) */}
+            <SelectSection>
+              <Label>아이의 이름을 입력해주세요! (선택)</Label>
+              <NameInput type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="ex. 홍길동" />
+            </SelectSection>
+          </FormContainer>
+        </>
       )}
       {/* 하단 네비게이션 */}
       {!isLoading && (

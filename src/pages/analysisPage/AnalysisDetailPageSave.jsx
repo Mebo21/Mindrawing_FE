@@ -1,44 +1,52 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import PageTemplate from '../../components/templates/PageTemplate';
+import sampleImage from '../../assets/images/H_Result_Sample.png';
+import sampleImage2 from '../../assets/images/T_Result_Sample.png';
+import sampleImage3 from '../../assets/images/P_Result_Sample.png';
+import Header from '../../components/layouts/Header';
+import { useNavigate } from 'react-router-dom';
 import routes from '../../constant/routes';
-import Loader from '../../components/layouts/Loader';
-import { getAnalysisResult } from '../../apis/analysis';
-import { useNavigate, useParams } from 'react-router-dom';
-import { useQuery } from '@tanstack/react-query';
+
+// 참고 : 세이브용임
 
 const AnalysisDetailPage = () => {
   const navigate = useNavigate();
-  const { id } = useParams(); // 주소에서 param 값을 가져옴
-
-  // useQuery를 객체 형태로 호출
-  const { data, isLoading, error } = useQuery({
-    queryKey: ['analysisResult', id],
-    queryFn: () => getAnalysisResult(id),
-  });
-
-  useEffect(() => {
-    console.log(id);
-  }, []);
-
-  if (isLoading) {
-    return (
-      <PageTemplate>
-        <Loader description="그림심리분석 결과를 불러오는 중이에요!!😘" /> {/* 로딩 중일 때 Loader 표시 */}
-      </PageTemplate>
-    );
-  }
-
-  if (error) {
-    navigate(routes.error);
-  }
 
   return (
     <PageTemplate>
-      <Header>
-        <HeaderText>그림 심리분석 결과</HeaderText>
-      </Header>
-      <AnalysisResultContainer></AnalysisResultContainer>
+      <Header title="그림 심리분석 상세 설명" />
+      <AnalysisResultContainer>
+        <AnalysisResultWrapper>
+          <AnalysisSection>
+            <h2>아이가 그린 H(House) 그림의 심리 분석 결과</h2>
+            <ImageWrapper>
+              <ResultImage src={sampleImage} alt="House Drawing" />
+            </ImageWrapper>
+            <DetailText>창문: ~~~</DetailText>
+            <DetailText>문: ~~~</DetailText>
+            <DetailText>굴뚝: ~~~</DetailText>
+          </AnalysisSection>
+          <AnalysisSection>
+            <h2>아이가 그린 T(Tree) 그림의 심리 분석 결과</h2>
+            <ImageWrapper>
+              <ResultImage src={sampleImage2} alt="Tree Drawing" />
+            </ImageWrapper>
+            <DetailText>수관: ~~~</DetailText>
+            <DetailText>가지: ~~~</DetailText>
+            <DetailText>뿌리: ~~~</DetailText>
+          </AnalysisSection>
+          <AnalysisSection>
+            <h2>아이가 그린 P(Person) 그림의 심리 분석 결과</h2>
+            <ImageWrapper>
+              <ResultImage src={sampleImage3} alt="Tree Drawing" />
+            </ImageWrapper>
+            <DetailText>사람전체: ~~~</DetailText>
+            <DetailText>눈: ~~~</DetailText>
+            <DetailText>운동화: ~~~</DetailText>
+          </AnalysisSection>
+        </AnalysisResultWrapper>
+      </AnalysisResultContainer>
       <NavContainer>
         <CenterNavButton onClick={() => navigate(routes.centerList)}>센터 목록 페이지로 이동하기</CenterNavButton>
         <HomeNavButton onClick={() => navigate(routes.home)}>홈으로 돌아가기</HomeNavButton>
@@ -50,19 +58,21 @@ const AnalysisDetailPage = () => {
 export default AnalysisDetailPage;
 
 // 스타일 정의
-const Header = styled.div`
-  width: 360px;
-  height: 60px;
-  background-color: #fff;
-  border-bottom: 1px solid #c9c9c9;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
 
-const HeaderText = styled.h1`
-  font-size: 24px;
-  font-weight: bold;
+const HeaderContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 60px;
+  padding: 10px;
+  background-color: #fff;
+  border-bottom: 1px solid #ccc;
+
+  h1 {
+    font-size: 24px;
+    font-weight: bold;
+  }
 `;
 
 const AnalysisResultContainer = styled.div`
@@ -77,6 +87,12 @@ const AnalysisResultContainer = styled.div`
   &::-webkit-scrollbar {
     display: none;
   }
+`;
+
+const AnalysisResultWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 `;
 
 const AnalysisSection = styled.div`

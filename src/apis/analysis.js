@@ -28,10 +28,12 @@ analysisInstance.interceptors.response.use(
   },
 );
 
-const uploadDatas = (formData) => {
+export const uploadDatas = (formData) => {
   console.log('formData : ', formData);
   console.log('전송 시도');
   return analysisInstance.post('/predict', formData);
 };
 
-export default uploadDatas;
+export const getAnalysisResult = (id) => {
+  return analysisInstance.get(`/predict/${id}`);
+};

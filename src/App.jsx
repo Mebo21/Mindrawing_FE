@@ -6,7 +6,6 @@ import LoginPage from './pages/defaultPage/LoginPage';
 import RegisterPage from './pages/defaultPage/RegisterPage';
 import AnalysisIntroPage from './pages/analysisPage/AnalysisIntroPage';
 import AnalysisInputPage from './pages/analysisPage/AnalysisInputPage';
-import AnalysisSummaryPage from './pages/analysisPage/AnalysisSummaryPage';
 import AnalysisDetailPage from './pages/analysisPage/AnalysisDetailPage';
 import AnalysisHistoryPage from './pages/analysisPage/AnalysisHistoryPage';
 import CenterListPage from './pages/centerPage/CenterListPage';
