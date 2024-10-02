@@ -139,9 +139,69 @@ AI : YOLOv5 베이스
 
 ## 페이지별 화면구성과 주요 기능
 
-```
-(추후 업데이트)
-```
+### 홈페이지
+
+| 홈페이지 | 홈페이지(모달창 활성화) | 홈페이지(위치 권한 요청) | 홈페이지(하단 지도)  | 
+| :---: | :---: | :---: | :---: |
+| ![image](https://github.com/user-attachments/assets/09bfed02-e182-4e67-9258-7496874f2d3c) | ![image](https://github.com/user-attachments/assets/ab7e7c86-304d-4eab-a832-794f752d8eaa) | ![image](https://github.com/user-attachments/assets/d09071c7-dd49-4be3-acff-822adebd87b2) | ![image](https://github.com/user-attachments/assets/3a961468-3363-4a31-ad1e-dd3e9b31bb92) |
+
+### 로그인 페이지
+
+| 로그인 페이지 | 로그인 완료 |
+| :---: | :---: |
+| ![image](https://github.com/user-attachments/assets/4592a950-3beb-4366-a473-93393b17533b) | ![image](https://github.com/user-attachments/assets/c6939a07-fa0c-4362-8615-d5bb6d7bfef4) |
+
+### 회원가입 페이지
+
+| 회원가입 페이지 | 회원가입 주소 정보 입력 | 회원가입 완료 |
+| :---: | :---: | :---: |
+| ![image](https://github.com/user-attachments/assets/41ae956c-130c-4532-a8b1-8d13b2e3b450) | ![image](https://github.com/user-attachments/assets/663261c9-1b7c-4ea9-8029-4aeb00ee50bc) | ![image](https://github.com/user-attachments/assets/99c839a7-660e-4c73-8dca-5464f7a4b8de) |
+
+### 그림심리분석 페이지(HTP 검사)
+
+| 그림심리분석 소개 페이지 | HTP 그림 및 정보 입력 페이지(상단) | HTP 그림 및 정보 입력 페이지(하단) |
+| :---: | :---: | :---: |
+| ![image](https://github.com/user-attachments/assets/8cfeb852-9c67-4d7e-9d15-0659c027fc76) | ![image](https://github.com/user-attachments/assets/1b72f0cb-4456-4d09-84d3-32298e86fa28) | ![image](https://github.com/user-attachments/assets/ad7d53d9-b475-4567-a415-27a85bae60d4) |
+
+| 그림심리분석 진행 페이지(AI 서버 전송) | 그림심리분석 진행 페이지(결과 불러오기) |
+| :---: | :---: |
+| ![image](https://github.com/user-attachments/assets/f0703b0e-c0be-494c-b484-f8b6379bddd4) | ![image](https://github.com/user-attachments/assets/520d4f3e-f989-4759-b3f6-432d5f0d43bf) |
+
+| 그림심리분석 결과 페이지 | 그림심리분석 내역 페이지 |
+| :---: | :---: |
+| ![image](https://github.com/user-attachments/assets/d7c4bf96-1bf0-449f-adf6-cae0cad146de) | ![image](https://github.com/user-attachments/assets/df5a9910-4655-43fe-91a2-e73e2a0de360) |
+
+### 센터매칭 페이지
+
+| 센터 목록 페이지 | 선택 센터 페이지(상단) | 선택 센터 페이지(하단) |
+| :---: | :---: | :---: |
+| ![image](https://github.com/user-attachments/assets/5eeecb18-0b52-4363-9502-e45792e06dfc) | ![image](https://github.com/user-attachments/assets/ccdb89cb-72f4-44e6-9ad9-9eef0023f293) | ![image](https://github.com/user-attachments/assets/838f6a71-bd3a-42b6-9811-f66d636f2d74) |
+
+| 센터 예약 페이지 | 센터 예약 페이지(확인창) |  센터 예약 페이지(예약 완료) |
+| :---: | :---: | :---: |
+| ![image](https://github.com/user-attachments/assets/b26ac990-4f12-413c-bad9-d5d6f4bbe98b) | ![image](https://github.com/user-attachments/assets/ee0a5873-e0e8-4759-bfa7-3804aa5d368c) | ![image](https://github.com/user-attachments/assets/adbd4037-932e-4276-b6fb-171ed7e1471a) |
+
+### 육아혜택정보 페이지
+
+| 육아 혜택 정보 목록 페이지 | 육아 혜택 정보 상세 페이지 |
+| :---: | :---: |
+| ![image](https://github.com/user-attachments/assets/f18d14be-e52a-4fb1-9c9c-913d179d263a) | ![image](https://github.com/user-attachments/assets/4ee2f0ec-5425-4ce5-b705-205f887e3ad2) |
+
+### 마이페이지
+
+| 마이페이지(관리자) | 마이페이지(사용자) |
+| :---: | :---: |
+| ![image](https://github.com/user-attachments/assets/4d5b000c-63e3-4532-acca-0a4e44dad4c9) | ![image](https://github.com/user-attachments/assets/484fd244-339e-4809-b4c6-1f65e8f8148f) |
+
+| 마이페이지(로그아웃 확인) | 마이페이지(로그아웃 완료) |
+| :---: | :---: |
+| ![image](https://github.com/user-attachments/assets/ac209567-9219-41e3-b26e-cac02fe70064) | ![image](https://github.com/user-attachments/assets/9d557ef1-3a2f-4e0b-bb9c-6571079afba8) |
+
+### 번외 - 에러페이지 & 로딩시 컴포넌트
+
+| 에러 페이지 | 로딩 컴포넌트 |
+| :---: | :---: |
+| ![image](https://github.com/user-attachments/assets/d3003abc-0590-41ff-ac2b-9e99e1d93cc8) | ![image](https://github.com/user-attachments/assets/122ae047-30d9-4413-8f52-e7cd1ef55d7d) |
 
 ## 시연 화면
 
