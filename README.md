@@ -31,14 +31,26 @@ $ npm run dev
 
 ### 프로젝트 기획 의도
 
+![Introduction](https://github.com/user-attachments/assets/9fa17aa0-a523-4f6d-8af6-518f6d52f0ef)
+
 ```
-(추후 업데이트)
+코로나19 시기를 지나면서, 소아청소년 정신 질환자 중 무려 65%가 악화되었다.
+소아청소년 시기의 정신 질환의 조기 파악 및 대응은 앞으로의 아이 성장에 있어 매우 중요하다.
+이를 부모의 입장에서 바라볼 때 아이의 정신질환을 파악하는 데 참고할 수 있는 HTP 검사의 경우
+시중 서비스 기준 1회당 약 40,000 ~ 80,000원으로, 검사비용이 부담스러운 것은 사실이다.
+이러한 상황에서 우리는 집에서도 손쉽게 아이가 그린 HTP 그림을 기반으로 단 몇십초만에 손쉽고 빠르게
+HTP 검사를 진행할 수 있으면서도 검사 결과를 바탕으로 바로 주변의 심리 센터와 매칭해줄 수 있는
+서비스를 개발하여 도움이 필요한 가족과 그 아이들을 돕고자 해당 서비스를 기획하게 되었다.
 ```
 
 ## 아키텍처
 
+![Architecture](https://github.com/user-attachments/assets/821dd173-d065-45f7-90ad-eaff78663e75)
+
 ```
-(추후 업데이트)
+Cloud Storage : 비정형 데이터 저장 및 관리(HTP 이미지)
+Cloud SQL : 정형 데이터 저장 및 관리 
+Compute Engine : VM 인스턴스 생성 및 활용 
 ```
 
 ## 디렉터리 구조
@@ -53,6 +65,7 @@ $ npm run dev
 ├── 📁 components
 │   ├─ 📁 atoms
 │   ├─ 📁 layout
+│   ├─ 📁 molecules
 │   └─ 📁 templates
 ├── 📁 constant
 ├── 📁 mocks
@@ -69,7 +82,22 @@ index.html
 ## 기술 스택
 
 ```
-(추후 업데이트)
+FE : React(HTML + CSS + JS)
+[FE 개발시 사용한 라이브러리]
+- styled-component(CSS 컴포넌트화 활용) 
+- react-responsive(반응형 레이아웃 구현) 
+- react-query(API 처리) 
+- react-icons & @mui/icons-material @mui/material(아이콘) 
+- sweetalert2(알림용) 
+- prettier(코드 보기 좋게 정리용)
+- axios(HTTP 요청을 쉽게 처리하기 위함)
+- react-slick slick-carousel(Carousel 라이브러리)
+- react-spring(모달창을 부드럽게 열고 닫기 위함)
+- react-daum-postcode(주소 검색용)
+- react-spinners(로딩 스피너 활용)
+- react-calendar(캘린더 라이브러리)
+BE : Flask(Python)
+AI : YOLOv5 베이스
 ```
 
 ## 커밋 컨벤션
